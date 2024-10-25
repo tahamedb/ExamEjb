@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Available CDs</title>
+</h:head>
+<h:body>
+    <h1>Available CDs</h1>
+    <h:dataTable value="#{userBean.listAvailableCDs}" var="cd">
+        <h:column>
+            <f:facet name="header">Title</f:facet>
+            #{cd.title}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Artist</f:facet>
+            #{cd.artist}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Genre</f:facet>
+            #{cd.genre}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Action</f:facet>
+            <h:form>
+                <h:commandButton value="Borrow" action="#{userBean.borrowCD}">
+                    <f:param name="cdId" value="#{cd.id}"/>
+                </h:commandButton>
+            </h:form>
+        </h:column>
+    </h:dataTable>
+    <br/>
+    <h:commandLink value="Back to Home" action="index"/>
+</h:body>
+</html>
